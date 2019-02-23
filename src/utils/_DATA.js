@@ -11,7 +11,7 @@ let users = {
     },
     questions: ['8xf0y6ziyjabvozdd253nd', 'am8ehyc8byjqgar0jgpub9']
   },
-  tylermcginnis: {
+  mohmdalfaha: {
     id: 'mohmdalfaha',
     name: 'Mohmd Alfaha',
     avatarURL: "http://faha.me/images/profile-pic.jpg" ,
@@ -76,7 +76,7 @@ let questions = {
   },
   "loxhs1bqm25b708cmbf3g": {
     id: 'loxhs1bqm25b708cmbf3g',
-    author: 'tylermcginnis',
+    author: 'mohmdalfaha',
     timestamp: 1482579767190,
     optionOne: {
       votes: [],
@@ -89,10 +89,10 @@ let questions = {
   },
   "vthrdm985a262al8qx3do": {
     id: 'vthrdm985a262al8qx3do',
-    author: 'tylermcginnis',
+    author: 'mohmdalfaha',
     timestamp: 1489579767190,
     optionOne: {
-      votes: ['tylermcginnis'],
+      votes: ['mohmdalfaha'],
       text: 'find $50 yourself',
     },
     optionTwo: {
@@ -109,7 +109,7 @@ let questions = {
       text: 'write JavaScript',
     },
     optionTwo: {
-      votes: ['tylermcginnis'],
+      votes: ['mohmdalfaha'],
       text: 'write Swift'
     }
   },
