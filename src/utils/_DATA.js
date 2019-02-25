@@ -2,7 +2,7 @@ let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: "http://faha.me/images/profile-pic.jpg",
+    avatarURL: "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/female/10.png",
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -24,7 +24,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: "http://faha.me/images/profile-pic.jpg",
+    avatarURL: " https://urlofseo.com/images/leemarshallavatar200.png",
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',
@@ -39,6 +39,7 @@ let questions = {
     id: '8xf0y6ziyjabvozdd253nd',
     author: 'sarahedo',
     timestamp: 1467166872634,
+    title:'memory',
     optionOne: {
       votes: ['sarahedo'],
       text: 'have horrible short term memory',
@@ -52,6 +53,7 @@ let questions = {
     id: '6ni6ok3ym7mf1p33lnez',
     author: 'johndoe',
     timestamp: 1468479767190,
+    title: 'To be',
     optionOne: {
       votes: [],
       text: 'become a superhero',
@@ -65,6 +67,7 @@ let questions = {
     id: 'am8ehyc8byjqgar0jgpub9',
     author: 'sarahedo',
     timestamp: 1488579767190,
+    title: 'superpowers',
     optionOne: {
       votes: [],
       text: 'be telekinetic',
@@ -78,6 +81,7 @@ let questions = {
     id: 'loxhs1bqm25b708cmbf3g',
     author: 'mohmdalfaha',
     timestamp: 1482579767190,
+    title: 'developer',
     optionOne: {
       votes: [],
       text: 'be a front-end developer',
@@ -91,6 +95,7 @@ let questions = {
     id: 'vthrdm985a262al8qx3do',
     author: 'mohmdalfaha',
     timestamp: 1489579767190,
+    title: 'money',
     optionOne: {
       votes: ['mohmdalfaha'],
       text: 'find $50 yourself',
@@ -104,6 +109,7 @@ let questions = {
     id: 'xj352vofupe1dqz9emx13r',
     author: 'johndoe',
     timestamp: 1493579767190,
+    title:'Programming Language',
     optionOne: {
       votes: ['johndoe'],
       text: 'write JavaScript',
@@ -131,7 +137,7 @@ export function _getQuestions () {
   })
 }
 
-export function formatQuestion ({ optionOneText, optionTwoText, author }) {
+ function formatQuestion ({ optionOneText, optionTwoText, author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
