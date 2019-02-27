@@ -3,9 +3,9 @@ import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 
-import Container from 'react-bootstrap/Container'
 
-import Dashboard from './Dashboard'
+//import Dashboard from './Dashboard'
+import QuestionPage from './QuestionPage'
 
 class App extends Component {
   componentDidMount() {
@@ -13,11 +13,11 @@ class App extends Component {
   }
   render() {
     return (
-      <div className="container">
+      <div className="list-container">
         <LoadingBar/>
         {this.props.loading === true
           ? null
-          : <Dashboard />
+          : <QuestionPage match={{params: {id:'xj352vofupe1dqz9emx13r'}}} />
         }
       </div>
     );

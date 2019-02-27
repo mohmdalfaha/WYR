@@ -9,6 +9,10 @@ class Dashboard extends Component {
     return (
       <div className='dashboard'>
         <h3 className='center'>List of polls</h3>
+        <div className='questions-filter'>
+          <button className='answered-btn'>Answered</button>
+          <button className='unanswered-btn'>Unanswered</button>
+        </div>
         <ul className='polls-list'>
         {this.props.questionIds.map((id) =>(
           <li key={id}>
