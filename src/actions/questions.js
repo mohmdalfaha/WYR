@@ -21,6 +21,7 @@ export function saveAnswer ({ authedUser, qid, answer }) {
 
 export function handleSaveAnswer (info) {
   return (dispatch) => {
+    //    dispatch(showLoading())
     dispatch(saveAnswer(info))
 
     return saveQuestionAnswer(info)
@@ -28,6 +29,9 @@ export function handleSaveAnswer (info) {
         console.warn('Error in handleSaveAnswer:',e)
         dispatch(saveAnswer(info))
         alert('There was an error saving the answer. Try again.')
+
       })
+            //.then(() => dispatch(hideLoading()));
+
   }
 }

@@ -7,6 +7,7 @@ import { handleSaveAnswer } from '../actions/questions'
 class QuestionPage extends Component {
   state = {
     hideOptions: false,
+    selectedAnswer:'optionOne',
   }
 
   componentDidMount(){
@@ -17,7 +18,7 @@ class QuestionPage extends Component {
 
   handleAnswer = (e) => {
     e.preventDefault()
-    const answer = this.answer
+    const answer = this.state.selectedAnswer
     const { dispatch, question, authedUser } = this.props
 
     dispatch(handleSaveAnswer({
@@ -52,11 +53,9 @@ class QuestionPage extends Component {
                         type="radio"
                         id="opt1"
                         name="answer"
-                        value={optionOne}
+                        value={optionOne.text}
                         defaultChecked={answeredQuestion === 'optionOne'}
                        />
-
-
                     <label>{optionOne.text}</label>
                   </div>
                     <div>
@@ -64,8 +63,8 @@ class QuestionPage extends Component {
                           type="radio"
                           id="opt2"
                           name="answer"
-                          value={optionTwo}
-                           defaultChecked={answeredQuestion === 'optionTwo'}
+                          value={optionTwo.text}
+                          defaultChecked={answeredQuestion === 'optionTwo'}
                          />
                       <label>{optionTwo.text}</label>
                   </div>
@@ -83,6 +82,7 @@ function mapStateToProps ({ authedUser, questions, users}, props) {
   const answeredQuestion = users[authedUser].answers[id]
 
   return {
+    users,
     answeredQuestion,
     authedUser,
     question : question
