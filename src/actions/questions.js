@@ -17,26 +17,21 @@ export function handleAddQuestion (optionOne,optionTwo) {
   return (dispatch, getState) => {
     const { authedUser } = getState()
 
-    dispatch(showLoading())
 
     const question = {
       optionOne,
       optionTwo,
       author:authedUser,
     }
+        dispatch(showLoading())
+
     return saveQuestion(question)
 
-    .then(() => {
+    .then((question) => {
+      dispatch(addQuestion(question))
       dispatch(handleInitialData());
       dispatch(hideLoading());
     })
-
-    .then((question) => dispatch(addQuestion(question)))
-      .catch(() => {
-        alert('oops !!, there was an error !!')
-      })
-      .then(() => dispatch(hideLoading()))
-
   }
 }
 
