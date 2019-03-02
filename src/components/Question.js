@@ -1,8 +1,6 @@
-  import React, { Component } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatQuestion, formatDate} from '../utils/helpers'
-
-
 
 
 class Question extends Component {

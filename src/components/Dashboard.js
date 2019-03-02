@@ -2,12 +2,14 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import '../App.css'
 import Question from './Question'
+import NavBar from './NavBar'
 
 class Dashboard extends Component {
   render() {
     console.log(this.props)
     return (
       <div className='dashboard'>
+        <NavBar />
         <h3 className='center'>List of polls</h3>
         <div className='questions-filter'>
           <button className='answered-btn'>Answered</button>

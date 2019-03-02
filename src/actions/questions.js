@@ -1,7 +1,44 @@
-import { saveQuestionAnswer } from '../utils/api'
+import { saveQuestionAnswer, saveQuestion } from '../utils/api'
+import { showLoading, hideLoading} from 'react-redux-loading'
+import { handleInitialData } from '../actions/shared'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const SAVE_ANSWER = 'SAVE_ANSWER'
+export const ADD_QUESTION = 'ADD_QUESTION'
+
+export function addQuestion (question) {
+  return{
+    type: ADD_QUESTION,
+    question,
+  }
+}
+
+export function handleAddQuestion (optionOne,optionTwo) {
+  return (dispatch, getState) => {
+    const { authedUser } = getState()
+
+    dispatch(showLoading())
+
+    const question = {
+      optionOne,
+      optionTwo,
+      author:authedUser,
+    }
+    return saveQuestion(question)
+
+    .then(() => {
+      dispatch(handleInitialData());
+      dispatch(hideLoading());
+    })
+
+    .then((question) => dispatch(addQuestion(question)))
+      .catch(() => {
+        alert('oops !!, there was an error !!')
+      })
+      .then(() => dispatch(hideLoading()))
+
+  }
+}
 
 export function receiveQuestions (questions) {
   return {
@@ -10,19 +47,17 @@ export function receiveQuestions (questions) {
   }
 }
 
-export function saveAnswer ({ authedUser, qid, answer }) {
+export function saveAnswer (answerInfo) {
   return {
     type: SAVE_ANSWER,
-    qid,
-    authedUser,
-    answer,
+    answerInfo
   }
 }
 
 export function handleSaveAnswer (info) {
-  return (dispatch) => {
-    //    dispatch(showLoading())
-    dispatch(saveAnswer(info))
+  return (dispatch, getState) => {
+
+        dispatch(showLoading())
 
     return saveQuestionAnswer(info)
       .catch((e) => {
@@ -31,7 +66,6 @@ export function handleSaveAnswer (info) {
         alert('There was an error saving the answer. Try again.')
 
       })
-            //.then(() => dispatch(hideLoading()));
-
+            .then(() => dispatch(hideLoading()));
   }
 }

@@ -7,7 +7,7 @@ import { handleSaveAnswer } from '../actions/questions'
 class QuestionPage extends Component {
   state = {
     hideOptions: false,
-    selectedAnswer:'optionOne',
+    selectedAnswer:'',
   }
 
   componentDidMount(){
@@ -16,22 +16,36 @@ class QuestionPage extends Component {
     })
   }
 
+/*
+  handleChange = (e) => {
+    e.preventDefault()
+
+    const option = e.target.value
+
+    this.setState(() => ({
+          selectedAnswer:option,
+        }))
+  }
+*/
+
   handleAnswer = (e) => {
     e.preventDefault()
     const answer = this.state.selectedAnswer
     const { dispatch, question, authedUser } = this.props
 
-    dispatch(handleSaveAnswer({
+    const info = {
       qid: question.id,
-      authedUser,
+      author:authedUser,
       answer,
-    }))
+    }
+
+    dispatch(handleSaveAnswer(info))
   }
 
 
   render() {
     console.log(this.props)
-    const { hideOptions } = this.state
+    const { hideOptions, selectedAnswer } = this.state
     const { question, handleAnswer, answeredQuestion } = this.props
     const { name,avatar,timestamp, optionOne, optionTwo} = question
 
@@ -45,16 +59,17 @@ class QuestionPage extends Component {
               <span>{name}</span>
               <div>{formatDate(timestamp)}</div>
             </div>
-            <form>
+            <form onSubmit={handleAnswer}>
               <h2 className='center'>Would You Rather</h2>
-                <fieldset disabled={hideOptions}>
+                <fieldset className='fieldset' disabled={hideOptions}>
                   <div>
                     <input
                         type="radio"
                         id="opt1"
                         name="answer"
-                        value={optionOne.text}
+                        value={"optionOne"}
                         defaultChecked={answeredQuestion === 'optionOne'}
+                        onChange={(e) => { this.setState({ selectedAnswer: e.target.value})}}
                        />
                     <label>{optionOne.text}</label>
                   </div>
@@ -63,12 +78,13 @@ class QuestionPage extends Component {
                           type="radio"
                           id="opt2"
                           name="answer"
-                          value={optionTwo.text}
+                          value={"optionTwo"}
                           defaultChecked={answeredQuestion === 'optionTwo'}
+                          onChange={(e) => { this.setState({ selectedAnswer: e.target.value})}}
                          />
                       <label>{optionTwo.text}</label>
                   </div>
-                    <button value='submit' onSubmit={handleAnswer}>Answer</button>
+                    <button disabled={selectedAnswer === ''} className='answer-btn' value='submit' >Answer</button>
                 </fieldset>
             </form>
         </div>

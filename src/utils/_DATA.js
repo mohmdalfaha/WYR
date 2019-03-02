@@ -1,8 +1,12 @@
+import pic from './pic.jpg'
+import pic2 from './pic2.jpg'
+import pic3 from './pic3.jpg'
+
 let users = {
   sarahedo: {
     id: 'sarahedo',
     name: 'Sarah Edo',
-    avatarURL: "https://raw.githubusercontent.com/Ashwinvalento/cartoon-avatar/master/lib/images/female/10.png",
+    avatarURL: pic3,
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
       "6ni6ok3ym7mf1p33lnez": 'optionTwo',
@@ -14,7 +18,7 @@ let users = {
   mohmdalfaha: {
     id: 'mohmdalfaha',
     name: 'Mohmd Alfaha',
-    avatarURL: "http://faha.me/images/profile-pic.jpg" ,
+    avatarURL: pic ,
     answers: {
       "vthrdm985a262al8qx3do": 'optionOne',
       "xj352vofupe1dqz9emx13r": 'optionTwo',
@@ -24,7 +28,7 @@ let users = {
   johndoe: {
     id: 'johndoe',
     name: 'John Doe',
-    avatarURL: " https://urlofseo.com/images/leemarshallavatar200.png",
+    avatarURL: pic2,
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
       "vthrdm985a262al8qx3do": 'optionTwo',

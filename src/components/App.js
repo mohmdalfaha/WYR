@@ -4,8 +4,8 @@ import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 
 
-//import Dashboard from './Dashboard'
-//import QuestionPage from './QuestionPage'
+import Dashboard from './Dashboard'
+import QuestionPage from './QuestionPage'
 //<QuestionPage match={{params: {id:'am8ehyc8byjqgar0jgpub9'}}} />
 import NewQuestion from './NewQuestion'
 
@@ -21,6 +21,7 @@ class App extends Component {
         {this.props.loading === true
           ? null
           : <NewQuestion />
+          //<QuestionPage match={{params: {id:'am8ehyc8byjqgar0jgpub9'}}}/>
         }
       </div>
     );
