@@ -6,7 +6,7 @@ export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const SAVE_ANSWER = 'SAVE_ANSWER'
 export const ADD_QUESTION = 'ADD_QUESTION'
 
-export function addQuestion (question) {
+function addQuestion (question) {
   return{
     type: ADD_QUESTION,
     question,
@@ -18,20 +18,18 @@ export function handleAddQuestion (optionOne,optionTwo) {
     const { authedUser } = getState()
 
 
-    const question = {
-      optionOne,
-      optionTwo,
-      author:authedUser,
-    }
-        dispatch(showLoading())
+    dispatch(showLoading())
 
-    return saveQuestion(question)
-
-    .then((question) => {
-      dispatch(addQuestion(question))
-      dispatch(handleInitialData());
-      dispatch(hideLoading());
+    return saveQuestion({
+      optionOneText:optionOne,
+      optionTwoText:optionTwo,
+      author: authedUser,
     })
+    .then((question) => dispatch(addQuestion(question)))
+      .then(dispatch(handleInitialData()))
+    .then(() => dispatch(hideLoading()))
+
+
   }
 }
 

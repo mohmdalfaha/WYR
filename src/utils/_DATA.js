@@ -141,7 +141,7 @@ export function _getQuestions () {
   })
 }
 
- function formatQuestion ({ optionOneText, optionTwoText, author }) {
+ function formatQuestion ({ optionOneText, optionTwoText,author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
@@ -153,15 +153,18 @@ export function _getQuestions () {
     optionTwo: {
       votes: [],
       text: optionTwoText,
+
     }
   }
+
+
 }
 
 export function _saveQuestion (question) {
   return new Promise((res, rej) => {
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
-
+console.log('foramated optins:',question.optionOne,question.optionTwo)
     setTimeout(() => {
       questions = {
         ...questions,
@@ -175,7 +178,7 @@ export function _saveQuestion (question) {
           questions: users[authedUser].questions.concat([formattedQuestion.id])
         }
       }
-
+      console.log('final result',formattedQuestion)
       res(formattedQuestion)
     }, 1000)
   })

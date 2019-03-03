@@ -95,6 +95,8 @@ class QuestionPage extends Component {
 function mapStateToProps ({ authedUser, questions, users}, props) {
   const { id } = props.match.params
   const question = questions[id]
+  const optionOne = question.optionOne.text
+  const optionTwo = question.optionTwo.text
   const answeredQuestion = users[authedUser].answers[id]
 
   return {
