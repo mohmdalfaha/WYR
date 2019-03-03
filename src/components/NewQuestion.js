@@ -17,6 +17,11 @@ class NewQuestion extends Component {
 
    console.log('the new questions are:', title,optionOne,optionTwo)
 
+   this.setState(() =>({
+    title:'',
+    optionOne:'',
+    optionTwo:'',
+   }))
 
 }
 

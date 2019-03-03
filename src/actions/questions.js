@@ -1,6 +1,7 @@
 import { saveQuestionAnswer, saveQuestion } from '../utils/api'
 import { showLoading, hideLoading} from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared'
+import { addUserQuestion } from '../actions/users'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const SAVE_ANSWER = 'SAVE_ANSWER'
@@ -26,9 +27,13 @@ export function handleAddQuestion (optionOne,optionTwo,title) {
       optionTwoText:optionTwo,
       author: authedUser,
     })
-    .then((question) => dispatch(addQuestion(question)))
-      .then(dispatch(handleInitialData()))
-    .then(() => dispatch(hideLoading()))
+    .then((question) => {
+          dispatch(addQuestion(question))
+          dispatch(addUserQuestion(authedUser, question.id))
+          dispatch(handleInitialData())
+          dispatch(hideLoading())
+        })
+
 
 
   }
