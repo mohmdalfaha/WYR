@@ -5,6 +5,23 @@ import Question from './Question'
 import NavBar from './NavBar'
 
 class Dashboard extends Component {
+  state = {
+
+    displayedQuestions: this.props.unansweredQuestions
+
+  }
+
+  handleAnswered = (e) => {
+    const {answeredQuestions} = this.props
+    this.setState(() => ({displayedQuestions:answeredQuestions}))
+  }
+
+  handleUnanswered = (e) => {
+    const {unansweredQuestions} = this.props
+
+    this.setState(() => ({displayedQuestions:unansweredQuestions}))
+  }
+
   render() {
     console.log(this.props)
     return (
@@ -12,11 +29,11 @@ class Dashboard extends Component {
         <NavBar />
         <h3 className='center'>List of polls</h3>
         <div className='questions-filter'>
-          <button className='answered-btn'>Answered</button>
-          <button className='unanswered-btn'>Unanswered</button>
+          <button className='answered-btn' onClick={this.handleAnswered}>Answered</button>
+          <button className='unanswered-btn' defaultClicked onClick={this.handleUnanswered}>Unanswered</button>
         </div>
         <ul className='polls-list'>
-        {this.props.questionIds.map((id) =>(
+        {this.state.displayedQuestions.map((id) =>(
           <li key={id}>
             <Question id={id}/>
           </li>
@@ -27,10 +44,25 @@ class Dashboard extends Component {
   }
 }
 
-function mapStateToProps({ questions }) {
+function mapStateToProps({ questions, authedUser, users }) {
+
+  //const user = users[authedUser]
+
+  const answeredQuestions = Object.keys(questions).length !== 0
+        ? Object.keys(users[authedUser].answers)
+            .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+        : []
+
+  const unansweredQuestions = Object.keys(questions).length !== 0
+        ? Object.keys(questions)
+            .filter(qid => !answeredQuestions.includes(qid))
+            .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+        : []
+
+
   return {
-    questionIds: Object.keys(questions)
-      .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
+    answeredQuestions,
+    unansweredQuestions,
   }
 }
 

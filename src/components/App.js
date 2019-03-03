@@ -20,7 +20,7 @@ class App extends Component {
         <LoadingBar/>
         {this.props.loading === true
           ? null
-          : <NewQuestion />
+          : <Dashboard />
           //<QuestionPage match={{params: {id:'am8ehyc8byjqgar0jgpub9'}}}/>
         }
       </div>
