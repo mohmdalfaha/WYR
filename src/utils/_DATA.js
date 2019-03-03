@@ -141,11 +141,12 @@ export function _getQuestions () {
   })
 }
 
- function formatQuestion ({ optionOneText, optionTwoText,author }) {
+ function formatQuestion ({ title, optionOneText, optionTwoText,author }) {
   return {
     id: generateUID(),
     timestamp: Date.now(),
     author,
+    title,
     optionOne: {
       votes: [],
       text: optionOneText,
@@ -164,7 +165,7 @@ export function _saveQuestion (question) {
   return new Promise((res, rej) => {
     const authedUser = question.author;
     const formattedQuestion = formatQuestion(question);
-console.log('foramated optins:',question.optionOne,question.optionTwo)
+//console.log('foramated optins:',question.optionOne,question.optionTwo)
     setTimeout(() => {
       questions = {
         ...questions,
@@ -178,7 +179,7 @@ console.log('foramated optins:',question.optionOne,question.optionTwo)
           questions: users[authedUser].questions.concat([formattedQuestion.id])
         }
       }
-      console.log('final result',formattedQuestion)
+      //console.log('final result',formattedQuestion)
       res(formattedQuestion)
     }, 1000)
   })

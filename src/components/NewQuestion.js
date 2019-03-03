@@ -4,24 +4,25 @@ import { handleAddQuestion } from '../actions/questions'
 
 class NewQuestion extends Component {
   state={
+        title:'',
         optionOne:'',
         optionTwo:'',
   }
   handleSubmit = (e) => {
     e.preventDefault()
-   const {optionOne, optionTwo} = this.state
+   const {title, optionOne, optionTwo } = this.state
    const { dispatch} = this.props
 
-  dispatch(handleAddQuestion(optionOne,optionTwo))
+  dispatch(handleAddQuestion(title, optionOne,optionTwo))
 
-   console.log('the new questions are:', optionOne,optionTwo)
+   console.log('the new questions are:', title,optionOne,optionTwo)
 
 
 }
 
   render() {
-    const { optionOne, optionTwo } = this.state
-    const emptyOpts = (optionOne && optionTwo) === ''
+    const { optionOne, optionTwo,title } = this.state
+    const emptyOpts = (optionOne && optionTwo && title) === ''
     return(
       <div>
         <h3 className='center'> New Question </h3>
@@ -29,18 +30,25 @@ class NewQuestion extends Component {
 
         <form className='new-question' onSubmit={(this.handleSubmit)}>
           <input
+              placeholder="title"
+              value={title}
+              onChange={(e)=>{this.setState({title:e.target.value})}}
+              className='title'
+              maxLength={50}
+              />
+          <input
               placeholder="Option One"
               value={optionOne}
               onChange={(e)=>{this.setState({optionOne:e.target.value})}}
               className='opt1'
-              maxLength={50}
+              maxLength={100}
               />
           <input
               placeholder="Option two"
               value={optionTwo}
               onChange={(e)=>{this.setState({optionTwo:e.target.value})}}
               className='opt2'
-              maxLength={50}
+              maxLength={100}
               />
               <button
                 className='btn'
