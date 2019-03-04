@@ -3,6 +3,8 @@ import { connect } from 'react-redux'
 import { formatQuestion,formatDate} from '../utils/helpers'
 import { handleSaveAnswer } from '../actions/questions'
 
+import ResultStat from './ResultStat'
+
 
 class QuestionPage extends Component {
   state = {
@@ -30,23 +32,27 @@ class QuestionPage extends Component {
 
   handleAnswer = (e) => {
     e.preventDefault()
-    const answer = this.state.selectedAnswer
+    const {selectedAnswer} = this.state
     const { dispatch, question, authedUser } = this.props
 
-    const info = {
-      qid: question.id,
-      author:authedUser,
-      answer,
-    }
+const qid = question
 
-    dispatch(handleSaveAnswer(info))
-  }
+console.log('submitted info',question, authedUser,selectedAnswer)
+
+  dispatch(handleSaveAnswer(
+       {
+        authedUser,
+        qid,
+        answer:selectedAnswer
+       }
+      ))
+}
 
 
   render() {
     console.log(this.props)
     const { hideOptions, selectedAnswer } = this.state
-    const { question, handleAnswer, answeredQuestion } = this.props
+    const { users,question, handleAnswer, answeredQuestion } = this.props
     const { name,avatar,timestamp, optionOne, optionTwo} = question
 
     return (
@@ -56,12 +62,15 @@ class QuestionPage extends Component {
             alt={`Avatar of ${name}`}
             className='avatar'/>
             <div className='question-info'>
-              <span>{name}</span>
+              <span>{name}'s Question </span>
               <div>{formatDate(timestamp)}</div>
             </div>
+
             <form onSubmit={handleAnswer}>
               <h2 className='center'>Would You Rather</h2>
-                <fieldset className='fieldset' disabled={hideOptions}>
+              {answeredQuestion ? (
+          <ResultStat users={users} question={question} selectedAnswer={answeredQuestion} />
+        ) : (<fieldset className='fieldset' disabled={hideOptions}>
                   <div>
                     <input
                         type="radio"
@@ -75,17 +84,17 @@ class QuestionPage extends Component {
                   </div>
                     <div>
                       <input
-                          type="radio"
-                          id="opt2"
-                          name="answer"
-                          value={"optionTwo"}
-                          defaultChecked={answeredQuestion === 'optionTwo'}
-                          onChange={(e) => { this.setState({ selectedAnswer: e.target.value})}}
+                        type="radio"
+                        id="opt2"
+                        name="answer"
+                        value={"optionTwo"}
+                        defaultChecked={answeredQuestion === 'optionTwo'}
+                        onChange={(e) => { this.setState({ selectedAnswer: e.target.value})}}
                          />
                       <label>{optionTwo.text}</label>
                   </div>
                     <button disabled={selectedAnswer === ''} className='answer-btn' value='submit' >Answer</button>
-                </fieldset>
+                </fieldset>)}
             </form>
         </div>
       )
@@ -97,14 +106,18 @@ function mapStateToProps ({ authedUser, questions, users}, props) {
   const question = questions[id]
   const optionOne = question.optionOne.text
   const optionTwo = question.optionTwo.text
-  const answeredQuestion = users[authedUser].answers[id]
+  const answeredQuestion = users[authedUser].answers[id] === "optionOne"
+  ? optionOne
+  : optionTwo
 
   return {
+    optionOne,
+    optionTwo,
     users,
     answeredQuestion,
     authedUser,
-    question : question
-             ? formatQuestion(question, users[question.author], authedUser)
+    question:question
+             ? formatQuestion(question, users[question.author])
              : null
   }
 }

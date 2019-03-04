@@ -30,7 +30,7 @@ class Dashboard extends Component {
         <h3 className='center'>List of polls</h3>
         <div className='questions-filter'>
           <button className='answered-btn' onClick={this.handleAnswered}>Answered</button>
-          <button className='unanswered-btn' defaultClicked onClick={this.handleUnanswered}>Unanswered</button>
+          <button className='unanswered-btn' onClick={this.handleUnanswered}>Unanswered</button>
         </div>
         <ul className='polls-list'>
         {this.state.displayedQuestions.map((id) =>(
@@ -46,8 +46,6 @@ class Dashboard extends Component {
 
 function mapStateToProps({ questions, authedUser, users }) {
 
-  //const user = users[authedUser]
-
   const answeredQuestions = Object.keys(questions).length !== 0
         ? Object.keys(users[authedUser].answers)
             .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
@@ -58,7 +56,6 @@ function mapStateToProps({ questions, authedUser, users }) {
             .filter(qid => !answeredQuestions.includes(qid))
             .sort((a,b) => questions[b].timestamp - questions[a].timestamp)
         : []
-
 
   return {
     answeredQuestions,

@@ -54,17 +54,18 @@ export function saveAnswer (answerInfo) {
 }
 
 export function handleSaveAnswer (info) {
-  return (dispatch, getState) => {
+  return (dispatch) => {
+     const {authedUser,qid,answer} = info
+    dispatch(showLoading())
 
-        dispatch(showLoading())
-
-    return saveQuestionAnswer(info)
-      .catch((e) => {
-        console.warn('Error in handleSaveAnswer:',e)
-        dispatch(saveAnswer(info))
-        alert('There was an error saving the answer. Try again.')
-
-      })
-            .then(() => dispatch(hideLoading()));
+    return saveQuestionAnswer(
+      {authedUser,
+       qid,
+       answer})
+      .then((answerInfo) => {
+          dispatch(saveAnswer(answerInfo))
+          dispatch(handleInitialData())
+          dispatch(hideLoading())
+        })
   }
 }
