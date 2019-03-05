@@ -10,20 +10,21 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 
   const optOneVoters = optionOne.votes.length
   const optTwoVoters = optionTwo.votes.length
-  const votingOptOnePercentage = (optOneVoters/usersLength)*100
-  const votingOptTwoPercentage = (optTwoVoters/usersLength)*100
+  const votingOptOnePercentage = parseInt((optOneVoters/usersLength)*100)
+  const votingOptTwoPercentage = parseInt((optTwoVoters/usersLength)*100)
 
 
   return (
 
     <div className='result-stat'>
         <div className='selected-answer'>
-        <span>1-{optionOne.text} | {optOneVoters} voters</span>
-        <ProgressBar now={votingOptOnePercentage}label={`${votingOptOnePercentage}`}/>
-        <span> 2-{optionTwo.text} | {optOneVoters} voters </span>
-        <ProgressBar now={votingOptTwoPercentage} label={`${votingOptTwoPercentage}`}/>
+        <span>1-{optionOne.text} | {optOneVoters} voters</span><br/>
+         <ProgressBar className='progressbar' now={votingOptOnePercentage} key={1} label={`${votingOptOnePercentage}%`}/>
 
-        <span>You selected "{props.selectedAnswer}"</span>
+        <span> 2-{optionTwo.text} | {optTwoVoters} voters </span><br/>
+         <ProgressBar  className='progressbar' now={votingOptTwoPercentage} key={2} label={`${votingOptTwoPercentage}%`}/>
+         <br/><br/>
+        <span className='you-selected'>You've selected "{props.selectedAnswer}"</span>
         </div>
     </div>
     )

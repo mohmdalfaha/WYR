@@ -5,6 +5,16 @@ body {
   color: #252525;
 }
 
+.progress-bar {
+  background:lightblue;
+}
+.progressbar{
+  background:lightgray ;
+}
+.you-selected{
+  color:lightgreen;
+
+}
 a {
   text-decoration: none;
   color: #252525;

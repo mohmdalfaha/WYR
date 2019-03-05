@@ -106,9 +106,9 @@ function mapStateToProps ({ authedUser, questions, users}, props) {
   const question = questions[id]
   const optionOne = question.optionOne.text
   const optionTwo = question.optionTwo.text
-  const answeredQuestion = users[authedUser].answers[id] === "optionOne"
-  ? optionOne
-  : optionTwo
+  const answeredQuestion = !(users[authedUser].answers[id])
+  ? null
+  : users[authedUser].answers[id] === 'optionOne' ? optionOne : optionTwo
 
   return {
     optionOne,
