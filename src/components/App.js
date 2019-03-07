@@ -8,26 +8,31 @@ import Dashboard from './Dashboard'
 import QuestionPage from './QuestionPage'
 //<QuestionPage match={{params: {id:'am8ehyc8byjqgar0jgpub9'}}} />
 import NewQuestion from './NewQuestion'
-
+import Header from './Header'
+import LeaderBoard from './LeaderBoard'
 
 class App extends Component {
   componentDidMount() {
     this.props.dispatch(handleInitialData())
   }
   render() {
-    return (
+    const {authedUser} = this.props
+      return (
       <div className="list-container">
-        <LoadingBar/>
+        <LoadingBar style={{background:'#007eff'}}/>
         {this.props.loading === true
           ? null
-          :  <QuestionPage match={{params: {id:'loxhs1bqm25b708cmbf3g'}}}/>
+          :  <div>
+          <Header />
+            <LeaderBoard/>
+          </div>
         }
       </div>
     );
   }
 }
 
-function mapStateToProps ({ authedUser }) {
+function mapStateToProps ({authedUser }) {
   return {
     loading: authedUser === null
   }

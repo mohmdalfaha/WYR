@@ -20,6 +20,7 @@ class NavBar extends Component {
           <div to='/NewQuestion' exact activeClassName='active'>
             New Question
           </div>
+
         </li>
       </ul>
     </nav>

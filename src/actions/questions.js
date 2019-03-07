@@ -2,6 +2,7 @@ import { saveQuestionAnswer, saveQuestion } from '../utils/api'
 import { showLoading, hideLoading} from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared'
 import { addUserQuestion } from '../actions/users'
+import { saveUserAnswer } from '../actions/users'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const SAVE_ANSWER = 'SAVE_ANSWER'
@@ -46,26 +47,22 @@ export function receiveQuestions (questions) {
   }
 }
 
-export function saveAnswer (answerInfo) {
+export function saveAnswer ({authedUser,qid,answer}) {
   return {
     type: SAVE_ANSWER,
-    answerInfo
+    authedUser,
+    qid,
+    answer
   }
 }
 
 export function handleSaveAnswer (info) {
-  return (dispatch) => {
-     const {authedUser,qid,answer} = info
+  return (dispatch,getState) => {
     dispatch(showLoading())
 
-    return saveQuestionAnswer(
-      {authedUser,
-       qid,
-       answer})
-      .then((answerInfo) => {
-          dispatch(saveAnswer(answerInfo))
-          dispatch(handleInitialData())
-          dispatch(hideLoading())
-        })
+    return saveQuestionAnswer(info)
+        .then(() => dispatch(saveAnswer(info)))
+        .then(() => dispatch(saveUserAnswer(info)))
+        .then(() => dispatch(hideLoading()))
   }
 }

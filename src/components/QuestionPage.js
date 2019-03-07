@@ -8,46 +8,29 @@ import ResultStat from './ResultStat'
 
 class QuestionPage extends Component {
   state = {
-    hideOptions: false,
+    hideOptions: this.props.answeredQuestion ? true : false ,
     selectedAnswer:'',
   }
 
-  componentDidMount(){
-    this.setState({
-      hideOptions: this.props.answeredQuestion ? true : false
-    })
-  }
 
-/*
-  handleChange = (e) => {
-    e.preventDefault()
-
-    const option = e.target.value
-
-    this.setState(() => ({
-          selectedAnswer:option,
-        }))
-  }
-*/
+handleChange = (e) => {
+  this.setState({
+    ...this.state,
+   selectedAnswer: e.target.value
+ })}
 
   handleAnswer = (e) => {
     e.preventDefault()
+
     const {selectedAnswer} = this.state
-    const { dispatch, question, authedUser } = this.props
+    const {dispatch, authedUser, question} = this.props
 
-const qid = question
-
-console.log('submitted info',question, authedUser,selectedAnswer)
-
-  dispatch(handleSaveAnswer(
-       {
-        authedUser,
-        qid,
-        answer:selectedAnswer
-       }
-      ))
+    dispatch(handleSaveAnswer({
+      authedUser,
+      qid:question.id,
+      answer:selectedAnswer
+    }))
 }
-
 
   render() {
     console.log(this.props)
@@ -72,26 +55,26 @@ console.log('submitted info',question, authedUser,selectedAnswer)
           <ResultStat users={users} question={question} selectedAnswer={answeredQuestion} />
         ) : (<fieldset className='fieldset' disabled={hideOptions}>
                   <div>
+                  <label>
                     <input
                         type="radio"
-                        id="opt1"
-                        name="answer"
-                        value={"optionOne"}
+                        name="option-is"
+                        value="optionOne"
                         defaultChecked={answeredQuestion === 'optionOne'}
-                        onChange={(e) => { this.setState({ selectedAnswer: e.target.value})}}
+                        onChange={this.handleChange}
                        />
-                    <label>{optionOne.text}</label>
+                    {optionOne.text}</label>
                   </div>
                     <div>
+                    <label>
                       <input
                         type="radio"
-                        id="opt2"
-                        name="answer"
-                        value={"optionTwo"}
+                        name="option-is"
+                        value="optionTwo"
                         defaultChecked={answeredQuestion === 'optionTwo'}
-                        onChange={(e) => { this.setState({ selectedAnswer: e.target.value})}}
+                        onChange={this.handleChange}
                          />
-                      <label>{optionTwo.text}</label>
+                      {optionTwo.text}</label>
                   </div>
                     <button disabled={selectedAnswer === ''} className='answer-btn' value='submit' >Answer</button>
                 </fieldset>)}
@@ -121,4 +104,5 @@ function mapStateToProps ({ authedUser, questions, users}, props) {
              : null
   }
 }
+
 export default connect(mapStateToProps)(QuestionPage)
