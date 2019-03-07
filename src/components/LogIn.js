@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { setAuthedUser } from '../actions/authedUser'
+import {Link} from 'react-router-dom'
 
 class LogIn extends Component {
   state={
@@ -38,9 +39,9 @@ class LogIn extends Component {
               ))
             }
           </select>
-          <button className='login-btn' onClick={this.handleLogin}>
+          <Link to='/Dashboard' className='login-btn' onClick={this.handleLogin}>
             Log In
-          </button>
+          </Link>
         </div>
       </div>
 

@@ -12,9 +12,9 @@ export function formatQuestion(question, author) {
     name,
     id,
     timestamp,
-    title,
     optionOne,
     optionTwo,
+    title,
     avatar: avatarURL,
     }
   }

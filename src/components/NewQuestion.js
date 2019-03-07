@@ -1,12 +1,16 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
+import { Redirect } from 'react-router-dom'
+import Header from './Header'
+
 
 class NewQuestion extends Component {
   state={
         title:'',
         optionOne:'',
         optionTwo:'',
+        toDashboard: false
   }
   handleSubmit = (e) => {
     e.preventDefault()
@@ -21,15 +25,23 @@ class NewQuestion extends Component {
     title:'',
     optionOne:'',
     optionTwo:'',
+    toDashboard: true,
    }))
 
 }
 
   render() {
-    const { optionOne, optionTwo,title } = this.state
+    const { optionOne, optionTwo,title, toDashboard } = this.state
+
+    if (toDashboard === true) {
+      return <Redirect to='/Dashboard'/>
+
+    }
+
     const emptyOpts = (optionOne && optionTwo && title) === ''
     return(
       <div>
+        <Header/>
         <h3 className='center'> New Question </h3>
         <h1 className='center'> Would You Rather ? </h1>
 

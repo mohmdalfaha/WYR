@@ -1,7 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { connect } from 'react-redux'
 import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
+import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 
 import Dashboard from './Dashboard'
@@ -11,6 +12,7 @@ import NewQuestion from './NewQuestion'
 import Header from './Header'
 import LeaderBoard from './LeaderBoard'
 import LogIn from './LogIn'
+import UserStat from './UserStat'
 
 
 class App extends Component {
@@ -20,16 +22,24 @@ class App extends Component {
   render() {
     const {authedUser} = this.props
       return (
-      <div className="list-container">
+       <Router>
+        <Fragment>
         <LoadingBar style={{background:'#007eff'}}/>
-        {this.props.loading === true
-          ? null
-          :  <div>
-          <LogIn/>
-          </div>
-        }
-      </div>
-    );
+         <div className="list-container">
+          {this.props.loading === true
+            ? null
+            :  <div>
+                <Route path='/login' exact component={LogIn}/>
+                <Route path='/Dashboard'  component={Dashboard}/>
+                <Route path='/LeaderBoard' component={LeaderBoard}/>
+                <Route path='/QuestionPage/:id' component={QuestionPage}/>
+                <Route path='/NewQuestion' component={NewQuestion}/>
+                <Route path='/UserStat' component={UserStat}/>
+               </div>}
+         </div>
+        </Fragment>
+      </Router>
+    )
   }
 }
 

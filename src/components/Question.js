@@ -1,11 +1,10 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatQuestion, formatDate} from '../utils/helpers'
-
+import { Link } from 'react-router-dom'
 
 class Question extends Component {
   render() {
-  //console.log(this.props)
     const { question } = this.props
 
     if (question === null) {
@@ -27,7 +26,7 @@ class Question extends Component {
             <div>
               <h2 className='center'>Would You Rather</h2>
               <h5 className='center'>'{title}'</h5>
-              <button className='btn'>View</button>
+              <Link to={`/QuestionPage/${id}`} className='btn'>View</Link>
             </div>
         </div>
 

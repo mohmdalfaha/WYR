@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import '../App.css'
 import Question from './Question'
+import Header from './Header'
 
 class Dashboard extends Component {
   state = {
@@ -25,6 +26,7 @@ class Dashboard extends Component {
     console.log(this.props)
     return (
       <div className='dashboard'>
+       <Header/>
         <h3 className='center'>List of polls</h3>
         <div className='questions-filter'>
           <button className='answered-btn' onClick={this.handleAnswered}>Answered</button>
