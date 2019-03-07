@@ -10,6 +10,8 @@ import QuestionPage from './QuestionPage'
 import NewQuestion from './NewQuestion'
 import Header from './Header'
 import LeaderBoard from './LeaderBoard'
+import LogIn from './LogIn'
+
 
 class App extends Component {
   componentDidMount() {
@@ -23,8 +25,7 @@ class App extends Component {
         {this.props.loading === true
           ? null
           :  <div>
-          <Header />
-            <LeaderBoard/>
+          <LogIn/>
           </div>
         }
       </div>

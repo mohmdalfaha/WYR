@@ -9,21 +9,16 @@ export default function questions (state = {}, action ) {
       }
 
     case SAVE_ANSWER :
+      const {qid, authedUser,answer} = answer.action
+      const selectedAnswer = answer.answer
+
       return {
         ...state,
-        [action.qid]: {
-          ...state[action.qid],
-          optionOne: {
-            ...state[action.qid].optionOne,
-            votes: action.answer === 'optionOne'
-            ? state[action.qid].optionOne.votes.concat([action.authedUser])
-            : state[action.qid].optionOne.votes
-          },
-          optionTwo: {
-            ...state[action.qid].optionTwo,
-            votes: action.answer === 'optionTwo'
-            ? state[action.qid].optionTwo.votes.concat([action.authedUser])
-            : state[action.qid].optionTwo.votes
+        [qid]: {
+          ...state[qid],
+          [selectedAnswer]: {
+            ...state[qid][selectedAnswer],
+            votes: state[qid][selectedAnswer].votes.concat([authedUser])
           }
         }
       }
