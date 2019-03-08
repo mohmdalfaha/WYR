@@ -30,7 +30,7 @@ class Dashboard extends Component {
         <h3 className='center'>List of polls</h3>
         <div className='questions-filter'>
           <button className='answered-btn' onClick={this.handleAnswered}>Answered</button>
-          <button className='unanswered-btn' onClick={this.handleUnanswered}>Unanswered</button>
+          <button className='unanswered-btn' defaultClicked onClick={this.handleUnanswered}>Unanswered</button>
         </div>
         <ul className='polls-list'>
         {this.state.displayedQuestions.map((id) =>(

@@ -26,7 +26,7 @@ class Question extends Component {
             <div>
               <h2 className='center'>Would You Rather</h2>
               <h5 className='center'>'{title}'</h5>
-              <Link to={`/QuestionPage/${id}`} className='btn'>View</Link>
+              <Link to={`/QuestionPage/${id}`} className='view-btn'>View</Link>
             </div>
         </div>
 

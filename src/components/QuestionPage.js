@@ -87,15 +87,12 @@ handleChange = (e) => {
 function mapStateToProps ({ authedUser, questions, users}, props) {
   const { id } = props.match.params
   const question = questions[id]
-  const optionOne = question.optionOne.text
-  const optionTwo = question.optionTwo.text
+  const {optionOne,optionTwo} = question
   const answeredQuestion = !(users[authedUser].answers[id])
   ? null
   : users[authedUser].answers[id] === 'optionOne' ? optionOne : optionTwo
 
   return {
-    optionOne,
-    optionTwo,
     users,
     answeredQuestion,
     authedUser,

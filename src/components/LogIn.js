@@ -25,6 +25,7 @@ class LogIn extends Component {
   render(){
     const {users} = this.props
     const userIds = Object.keys(users)
+    const disable = this.state.selectedUser === null
     return (
       <div className='login-page'>
         <div className='user-details'>
@@ -34,12 +35,14 @@ class LogIn extends Component {
            <p> At the same time, the user can answer others' questions.
            <br/> The most answering and qeustioning person will be ranked at the top</p>
           <select onChange={this.handleChange}>
+            <option value={null}>select a user</option>
             {users.map((user) => (
             <option key={user.id} value={user.id}>{user.name} </option>
               ))
             }
           </select>
-          <Link to='/Dashboard' className='login-btn' onClick={this.handleLogin}>
+          <Link to='/Dashboard' className='login-btn'
+          onClick={this.handleLogin} disabled={disable}>
             Log In
           </Link>
         </div>

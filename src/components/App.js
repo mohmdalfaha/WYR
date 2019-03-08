@@ -7,7 +7,6 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 
 import Dashboard from './Dashboard'
 import QuestionPage from './QuestionPage'
-//<QuestionPage match={{params: {id:'am8ehyc8byjqgar0jgpub9'}}} />
 import NewQuestion from './NewQuestion'
 import Header from './Header'
 import LeaderBoard from './LeaderBoard'
@@ -29,7 +28,7 @@ class App extends Component {
           {this.props.loading === true
             ? null
             :  <div>
-                <Route path='/login' exact component={LogIn}/>
+                <Route path='/' exact component={LogIn}/>
                 <Route path='/Dashboard'  component={Dashboard}/>
                 <Route path='/LeaderBoard' component={LeaderBoard}/>
                 <Route path='/QuestionPage/:id' component={QuestionPage}/>
