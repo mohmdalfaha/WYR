@@ -11,7 +11,7 @@ class Question extends Component {
       return <p> This Question doesn't exists</p>
     }
 
-    const { name,avatar, author, id, timestamp,title, optionOne, optionTwo} = question
+    const { name,avatar, id, timestamp,title} = question
     return (
 
       <div className='question'>

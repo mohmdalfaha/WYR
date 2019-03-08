@@ -24,7 +24,6 @@ class LogIn extends Component {
   }
   render(){
     const {users} = this.props
-    const userIds = Object.keys(users)
     const disable = this.state.selectedUser === null
     return (
       <div className='login-page'>
