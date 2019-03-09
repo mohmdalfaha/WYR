@@ -44,10 +44,9 @@ tr:nth-child(even) {
     width: 100%;
     max-width: fit-content;
     padding: 10px;
-    display: flex;
+    display: grid;
     margin: 10px 10px 10px auto;
     border-radius: 3px;
-    cursor: pointer;
     align-items: center;
 
 }
@@ -65,9 +64,12 @@ a {
 
 .polls-list {
     display: flex;
-    flex-flow: inherit;
-    margin-left: 200px;
+    justify-content: center;
+    flex-wrap:wrap;
 }
+
+
+
 .answered-btn {
     margin: auto;
     padding: 10px;

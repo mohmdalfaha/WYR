@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import {Link} from 'react-router-dom'
 
 class LoginDetails extends Component {
   render(){
@@ -11,7 +12,9 @@ class LoginDetails extends Component {
             alt={`Avatar of ${authedUser}`}
             src={avatar}
             className='user-avatar'/>
-            <h6 className='user-name'>{name}<br/>Logged In</h6>
+            <span className='user-name'>{name}</span>
+              <Link to='/' className='log-out'>Log Out</Link>
+
       </div>
       )
   }
