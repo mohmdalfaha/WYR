@@ -3,6 +3,7 @@ import { showLoading, hideLoading} from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared'
 import { addUserQuestion } from '../actions/users'
 import { saveUserAnswer } from '../actions/users'
+import { handleLogIn } from '../actions/authedUser'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const SAVE_ANSWER = 'SAVE_ANSWER'
@@ -30,7 +31,6 @@ export function handleAddQuestion (title,optionOne,optionTwo) {
     .then((question) => {
           dispatch(addQuestion(question))
           dispatch(addUserQuestion(authedUser, question.id))
-          dispatch(handleInitialData())
           dispatch(hideLoading())
         })
 
