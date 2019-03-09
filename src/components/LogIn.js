@@ -1,11 +1,13 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { setAuthedUser } from '../actions/authedUser'
-import {Link} from 'react-router-dom'
+import { handleLogIn } from '../actions/authedUser'
+import { handleInitialData} from '../actions/shared'
+import {Redirect} from 'react-router-dom'
 
 class LogIn extends Component {
   state={
-    selectedUser:null
+    selectedUser:'',
+    toDashboard:false
   }
 
   handleChange = (e) => {
@@ -19,12 +21,23 @@ class LogIn extends Component {
 
   handleLogin = () => {
     const {dispatch} = this.props
-    const authedUser = this.state.selectedUser
-    dispatch(setAuthedUser(authedUser))
+    const {selectedUser} = this.state //Make sure while destructuing use '{}'
+
+    const authedUser = selectedUser
+    dispatch(handleLogIn(authedUser))
+
+    this.setState({
+      toDashboard:true
+    })
   }
   render(){
-    const {users} = this.props
-    const disable = this.state.selectedUser === null
+     const {users} = this.props
+     const {toDashboard,selectedUser} = this.state
+
+     if(toDashboard){
+      return <Redirect to='/Dashboard'/>
+     }
+
     return (
       <div className='login-page'>
         <div className='user-details'>
@@ -34,16 +47,16 @@ class LogIn extends Component {
            <p> At the same time, the user can answer others' questions.
            <br/> The most answering and qeustioning person will be ranked at the top</p>
           <select onChange={this.handleChange}>
-            <option value={null}>select a user</option>
+            <option></option>
             {users.map((user) => (
             <option key={user.id} value={user.id}>{user.name} </option>
               ))
             }
           </select>
-          <Link to='/Dashboard' className='login-btn'
-          onClick={this.handleLogin} disabled={disable}>
+          <button  className='login-btn'
+          onClick={this.handleLogin} disabled={this.state.selectedUser === ''}>
             Log In
-          </Link>
+          </button>
         </div>
       </div>
 

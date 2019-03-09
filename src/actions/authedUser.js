@@ -6,3 +6,10 @@ export function setAuthedUser (id) {
     id,
   }
 }
+
+
+export const handleLogIn = (id) => {
+  return (dispatch) => {
+    return(dispatch(setAuthedUser(id)))
+  }
+}

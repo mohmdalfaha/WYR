@@ -13,13 +13,12 @@ class LoginDetails extends Component {
             src={avatar}
             className='user-avatar'/>
             <span className='user-name'>{name}</span>
-              <Link to='/' className='log-out'>Log Out</Link>
+            <Link to='/' className='log-out'>Log Out</Link>
 
       </div>
       )
   }
 }
-
 function mapStateToProps({users,authedUser}) {
   const avatar = users[authedUser].avatarURL
   const name = users[authedUser].name
