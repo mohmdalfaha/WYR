@@ -27,7 +27,6 @@ class QuestionPage extends Component {
     }
      ))
 
-    console.log('selectedAnswer',answer)
 }
 
   render() {
@@ -37,7 +36,7 @@ class QuestionPage extends Component {
     const { name,avatar,timestamp, optionOne, optionTwo} = question
 
     return (
-<div className='question'>
+<div className='question-page'>
           <img
             src={avatar}
             alt={`Avatar of ${name}`}

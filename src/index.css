@@ -65,7 +65,8 @@ a {
 
 .polls-list {
     display: flex;
-    flex-flow: wrap;
+    flex-flow: inherit;
+    margin-left: 200px;
 }
 .answered-btn {
     margin: auto;
@@ -200,13 +201,24 @@ li {
   display: grid;
   margin: 0 auto;
   border: 1px solid #dad7d7;
-  border-radius: 3px;
+  border-radius: 40px;
+  align-items:center;
+}
+
+.question-page {
+  text-align:center;
+  width: 100%;
+  max-width: fit-content;
+  padding: 10px;
+  display: grid;
+  margin: 0 auto;
+  border: 1px solid #dad7d7;
+  border-radius: 6px;
   align-items:center;
 }
 
 .question-info {
-      padding-top: inherit;
-
+  padding-top: inherit;
   margin: auto;
   display: flex;
   flex-direction: column;
@@ -289,6 +301,29 @@ li {
   width: 250px;
   position: relative;
 }
+
+.progressbar{
+  background:lightblue;
+}
+
+.progress-bar{
+  background:#79ea55;
+}
+
+.to-home{
+  text-transform: uppercase;
+  margin: 18px 3px auto;
+  padding: 10px;
+  border: 1px solid rgba(0,0,0,.29);
+  cursor: pointer;
+  background: #fff;
+  font-size: 16px;
+  width: 250px;
+  position: relative;
+  display:inline-table;
+  border-radius:60px;
+}
+
 
 .login-page{
   text-align:center;

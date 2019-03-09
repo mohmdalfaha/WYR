@@ -1,6 +1,6 @@
 import React from 'react'
 import ProgressBar from 'react-bootstrap/ProgressBar'
-
+import { Link } from 'react-router-dom'
 
  function ResultStat(props)  {
   const {question,selectedAnswer,users} = props
@@ -13,18 +13,21 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
   const votingOptOnePercentage = parseInt((optOneVoters/usersLength)*100)
   const votingOptTwoPercentage = parseInt((optTwoVoters/usersLength)*100)
 
-
   return (
 
     <div className='result-stat'>
         <div className='selected-answer'>
         <span>1-{optionOne.text} | {optOneVoters} voters</span><br/>
-         <ProgressBar className='progressbar' now={votingOptOnePercentage} key={1} label={`${votingOptOnePercentage}%`}/>
+         <ProgressBar className='progressbar'
+          now={votingOptOnePercentage}
+          key={1} label={`${votingOptOnePercentage}%`}
+          style={{backgroun:'#9eccfe'}}/>
 
         <span> 2-{optionTwo.text} | {optTwoVoters} voters </span><br/>
          <ProgressBar  className='progressbar' now={votingOptTwoPercentage} key={2} label={`${votingOptTwoPercentage}%`}/>
          <br/><br/>
         <span className='you-selected'>You've selected "{props.selectedAnswer}"</span>
+        <Link to='/Dashboard' className='to-home'> Back Home </Link>
         </div>
     </div>
     )
