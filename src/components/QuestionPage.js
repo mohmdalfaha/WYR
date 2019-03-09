@@ -19,7 +19,7 @@ class QuestionPage extends Component {
     })
 
     const answer = e.target.value
-    const {dispatch, authedUser, question} = this.props
+    const {dispatch, question} = this.props
 
     dispatch(handleSaveAnswer({
       qid:question.id,
@@ -31,8 +31,7 @@ class QuestionPage extends Component {
 
   render() {
     console.log(this.props)
-    const { selectedAnswer } = this.state
-    const { users,question, handleAnswer, answeredQuestion } = this.props
+    const { users,question, answeredQuestion } = this.props
     const { name,avatar,timestamp, optionOne, optionTwo} = question
 
     return (

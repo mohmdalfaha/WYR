@@ -1,9 +1,9 @@
 import { saveQuestionAnswer, saveQuestion } from '../utils/api'
 import { showLoading, hideLoading} from 'react-redux-loading'
-import { handleInitialData } from '../actions/shared'
+//import { handleInitialData } from '../actions/shared'
 import { addUserQuestion } from '../actions/users'
 import { saveUserAnswer } from '../actions/users'
-import { handleLogIn } from '../actions/authedUser'
+//import { handleLogIn } from '../actions/authedUser'
 
 export const RECEIVE_QUESTIONS = 'RECEIVE_QUESTIONS'
 export const SAVE_ANSWER = 'SAVE_ANSWER'

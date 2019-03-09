@@ -3,7 +3,6 @@ import { connect } from 'react-redux'
 import '../App.css'
 import Question from './Question'
 import Header from './Header'
-import { handleInitialData } from '../actions/shared'
 class Dashboard extends Component {
   state = {
 

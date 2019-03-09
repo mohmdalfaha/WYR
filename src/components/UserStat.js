@@ -23,13 +23,13 @@ class UserStat extends Component {
 
       </div>
       <table>
-  <tr>
+  <tr className='header-table'>
     <th>User</th>
     <th>questions</th>
     <th>Answers</th>
     <th>Score</th>
   </tr>
-  <tr>
+  <tr className='body-table'>
     <td>
     <img
           src={avatarURL}

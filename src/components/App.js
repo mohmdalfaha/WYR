@@ -12,6 +12,7 @@ import NewQuestion from './NewQuestion'
 import LeaderBoard from './LeaderBoard'
 import LogIn from './LogIn'
 import UserStat from './UserStat'
+import NoPageFound from './NoPageFound'
 
 class App extends Component {
   componentDidMount() {
@@ -33,11 +34,8 @@ class App extends Component {
                   <Route path='/QuestionPage/:id' component={QuestionPage}/>
                   <Route path='/NewQuestion' component={NewQuestion}/>
                   <Route path='/UserStat' component={UserStat}/>
-                  <Route render={function () {
-                    return <div className='no-match-'>
-                              <p className='no-match-p'>No Page Found</p>
-                           </div>
-                  }}/>
+                  <Route render={()=> <NoPageFound/>
+                  }/>
                 </Switch>
                </div>}
          </div>

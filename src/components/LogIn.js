@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleLogIn } from '../actions/authedUser'
-import { handleInitialData} from '../actions/shared'
 import {Redirect} from 'react-router-dom'
 
 class LogIn extends Component {
@@ -32,7 +31,7 @@ class LogIn extends Component {
   }
   render(){
      const {users} = this.props
-     const {toDashboard,selectedUser} = this.state
+     const {toDashboard} = this.state
 
      if(toDashboard){
       return <Redirect to='/Dashboard'/>
