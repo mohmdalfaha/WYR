@@ -4,7 +4,7 @@ import { formatQuestion,formatDate} from '../utils/helpers'
 import { handleSaveAnswer } from '../actions/questions'
 
 import ResultStat from './ResultStat'
-
+import Header from './Header'
 
 class QuestionPage extends Component {
   state = {
@@ -36,8 +36,10 @@ class QuestionPage extends Component {
     const { name,avatar,timestamp, optionOne, optionTwo} = question
 
     return (
-<div className='question-page'>
-          <img
+      <div>
+      <Header/>
+       <div className='question-page'>
+        <img
             src={avatar}
             alt={`Avatar of ${name}`}
             className='avatar'/>
@@ -57,6 +59,7 @@ class QuestionPage extends Component {
             </fieldset>)}
             </form>
         </div>
+      </div>
       )
   }
 }
