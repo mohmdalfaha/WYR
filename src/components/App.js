@@ -4,7 +4,6 @@ import { handleInitialData } from '../actions/shared'
 import LoadingBar from 'react-redux-loading'
 import {BrowserRouter as Router, Route,Switch} from 'react-router-dom'
 
-
 import Dashboard from './Dashboard'
 import QuestionPage from './QuestionPage'
 import NewQuestion from './NewQuestion'
@@ -16,28 +15,29 @@ import NoPageFound from './NoPageFound'
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
+    const AUTHED_USER = null
+    this.props.dispatch(handleInitialData(AUTHED_USER))
   }
   render() {
+      const {authedUser} = this.props
+
       return (
        <Router>
         <Fragment>
         <LoadingBar style={{background:'#007eff'}}/>
          <div className="list-container">
-          {this.props.loading === true
-            ? null
-            : <div>
-                <Switch>
-                  <Route path='/' exact component={LogIn}/>
-                  <Route path='/Dashboard'  component={Dashboard}/>
-                  <Route path='/LeaderBoard' component={LeaderBoard}/>
-                  <Route path='/QuestionPage/:id' component={QuestionPage}/>
-                  <Route path='/NewQuestion' component={NewQuestion}/>
-                  <Route path='/UserStat' component={UserStat}/>
-                  <Route render={()=> <NoPageFound/>
-                  }/>
-                </Switch>
-               </div>}
+         <Switch>
+          {authedUser === null
+            ? <Route path='/' exact component={LogIn}/>
+            : <Fragment>
+                  <Route path='/'  exact component={Dashboard}/>
+                  <Route path='/LeaderBoard' exact component={LeaderBoard}/>
+                  <Route path='/QuestionPage/:id' exact component={QuestionPage}/>
+                  <Route path='/NewQuestion'exact component={NewQuestion}/>
+                  <Route path='/UserStat'exact component={UserStat}/>
+               </Fragment>}
+                  <Route render={()=> <NoPageFound/>}/>
+               </Switch>
          </div>
         </Fragment>
       </Router>
@@ -47,7 +47,8 @@ class App extends Component {
 
 function mapStateToProps ({authedUser }) {
   return {
-    loading: authedUser === null,
+    //loading: authedUser === null,
+    authedUser
   }
 }
 

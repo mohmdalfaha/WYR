@@ -57,6 +57,7 @@ function mapStateToProps({ questions, authedUser, users }) {
         : []
 
   return {
+    authedUser,
     answeredQuestions,
     unansweredQuestions,
   }

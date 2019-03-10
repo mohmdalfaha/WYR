@@ -7,7 +7,7 @@ class NavBar extends Component {
     <nav className='nav'>
       <ul>
         <li>
-          <NavLink to='/dashboard' exact activeClassName='active'>
+          <NavLink to='/' exact activeClassName='active'>
             Dashboard
           </NavLink>
         </li>

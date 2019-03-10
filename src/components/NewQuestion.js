@@ -34,7 +34,7 @@ class NewQuestion extends Component {
     const { optionOne, optionTwo,title, toDashboard } = this.state
 
     if (toDashboard === true) {
-      return <Redirect to='/Dashboard'/>
+      return <Redirect to='/'/>
 
     }
 

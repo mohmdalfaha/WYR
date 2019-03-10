@@ -34,7 +34,7 @@ class LogIn extends Component {
      const {toDashboard} = this.state
 
      if(toDashboard){
-      return <Redirect to='/Dashboard'/>
+      return <Redirect to='/'/>
      }
 
     return (

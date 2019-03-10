@@ -27,7 +27,7 @@ import { Link } from 'react-router-dom'
          <ProgressBar  className='progressbar' now={votingOptTwoPercentage} key={2} label={`${votingOptTwoPercentage}%`}/>
          <br/><br/>
         <span className='you-selected'>You've selected "{selectedAnswer}"</span>
-        <Link to='/Dashboard' className='to-home'> Back Home </Link>
+        <Link to='/' className='to-home'> Back Home </Link>
         </div>
     </div>
     )
