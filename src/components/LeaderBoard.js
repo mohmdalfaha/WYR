@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
 import {connect} from 'react-redux'
 import UserStat from './UserStat'
-import Header from './Header'
 
 class LeaderBoard extends Component {
   render(){
@@ -9,7 +8,6 @@ class LeaderBoard extends Component {
 
   return (
     <div className='leader-board'>
-     <Header />
       <div className='rainking-lis'>
       <ul>
         {usersIds.map((id) =>(

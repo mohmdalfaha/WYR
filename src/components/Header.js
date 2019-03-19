@@ -1,13 +1,25 @@
-import React from 'react'
+import React,{ Component } from 'react'
 import NavBar from './NavBar'
 import LoginDetails from './LoginDetails'
+import {connect} from 'react-redux'
 
-function Header () {
-  return (
-    <div className='header'>
-      <NavBar/>
-      <LoginDetails />
-    </div>
+class Header extends Component  {
+  render() {
+  const {authedUser} = this.props
+   return (
+      <div className='header'>
+        <NavBar/>
+        {authedUser && <LoginDetails /> }
+      </div>
     )
+  }
 }
-export default Header
+
+
+function mapStateToProps  ({authedUser}) {
+  return{
+    authedUser
+  }
+}
+
+export default connect(mapStateToProps)(Header)

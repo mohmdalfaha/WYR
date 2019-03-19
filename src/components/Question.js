@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { formatQuestion, formatDate} from '../utils/helpers'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 
 class Question extends Component {
   render() {
@@ -12,8 +12,8 @@ class Question extends Component {
     }
 
     const { name,avatar, id, timestamp,title} = question
-    return (
 
+    return (
       <div className='question'>
           <img
             src={avatar}
@@ -44,4 +44,4 @@ function mapStateToProps ({authedUser, users, questions},{id}) {
              : null
   }
 }
-export default connect(mapStateToProps)(Question)
+export default withRouter(connect(mapStateToProps)(Question))

@@ -1,5 +1,6 @@
 import React from 'react'
 import {Link} from 'react-router-dom'
+
 function NoPageFound(){
   return (
     <div className='no-match'>

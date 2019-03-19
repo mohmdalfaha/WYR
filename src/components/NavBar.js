@@ -17,7 +17,7 @@ class NavBar extends Component {
           </NavLink>
         </li>
         <li>
-          <NavLink to='/NewQuestion' exact activeClassName='active'>
+          <NavLink to='/add' exact activeClassName='active'>
             New Question
           </NavLink>
 

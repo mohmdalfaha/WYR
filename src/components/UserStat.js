@@ -30,13 +30,13 @@ class UserStat extends Component {
     <th>Score</th>
   </tr>
   <tr className='body-table'>
-    <td>
+    <td >
     <img
           src={avatarURL}
           alt={`avatar of ${name}`}
           className='UserStat-avatar'
         />
-    <h3 className='center'>{name}</h3>
+    <span className='userStat-name'>{name}</span>
     </td>
     <td>{questionsLength}</td>
     <td>{answersLength}</td>

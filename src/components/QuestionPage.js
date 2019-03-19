@@ -4,11 +4,19 @@ import { formatQuestion,formatDate} from '../utils/helpers'
 import { handleSaveAnswer } from '../actions/questions'
 
 import ResultStat from './ResultStat'
-import Header from './Header'
+import NoQuestionFound from './NoQuestionFound'
 
 class QuestionPage extends Component {
   state = {
-    selectedAnswer:''
+    selectedAnswer:'',
+    NotFound:true
+
+  }
+
+  componentDidMount(){
+    this.setState({
+      NotFound: this.props.NoQuestion === true ? true : false
+    })
   }
 
   handleAnswer = (e) => {
@@ -30,13 +38,16 @@ class QuestionPage extends Component {
 }
 
   render() {
+    if (this.state.NotFound){
+      return <NoQuestionFound/>
+    }
     console.log(this.props)
-    const { users,question, answeredQuestion } = this.props
+    const { users,question,answeredQuestion, NoQuestion } = this.props
+
     const { name,avatar,timestamp, optionOne, optionTwo} = question
 
     return (
       <div>
-      <Header/>
        <div className='question-page'>
         <img
             src={avatar}
@@ -65,11 +76,20 @@ class QuestionPage extends Component {
 
 function mapStateToProps ({ authedUser, questions, users}, props) {
   const { id } = props.match.params
+  console.log(id)
   const question = questions[id]
-  const {optionOne,optionTwo} = question
+
+   if(!question){
+    return {
+      NoQuestion:true
+    }
+  }
+
+  const {optionTwo,optionOne} = question
   const answeredQuestion = !(users[authedUser].answers[id])
   ? null
   : users[authedUser].answers[id] === 'optionOne' ? optionOne.text : optionTwo.text
+
 
   return {
     users,

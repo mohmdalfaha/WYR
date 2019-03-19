@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { handleAddQuestion } from '../actions/questions'
 import { Redirect } from 'react-router-dom'
-import Header from './Header'
 
 
 class NewQuestion extends Component {
@@ -41,7 +40,6 @@ class NewQuestion extends Component {
     const emptyOpts = (optionOne && optionTwo && title) === ''
     return(
       <div>
-        <Header/>
         <h3 className='center'> New Question </h3>
         <h1 className='center'> Would You Rather ? </h1>
 
