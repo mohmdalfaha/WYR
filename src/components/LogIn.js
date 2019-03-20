@@ -45,7 +45,7 @@ class LogIn extends Component {
          question of two options, and others will answer with only one option</p>
            <p> At the same time, the user can answer others' questions.
            <br/> The most answering and qeustioning person will be ranked at the top</p>
-          <select onChange={this.handleChange}>
+          <select className='users-options' onChange={this.handleChange}>
             <option></option>
             {users.map((user) => (
             <option key={user.id} value={user.id}>{user.name} </option>

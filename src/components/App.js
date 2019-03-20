@@ -10,12 +10,12 @@ import NewQuestion from './NewQuestion'
 import Header from './Header'
 import LeaderBoard from './LeaderBoard'
 import LogIn from './LogIn'
-import UserStat from './UserStat'
 import NoPageFound from './NoPageFound'
 
 class App extends Component {
   componentDidMount() {
-    this.props.dispatch(handleInitialData())
+    const AUTHED_USER = null
+    this.props.dispatch(handleInitialData(AUTHED_USER))
   }
   render() {
     const {loading} = this.props
@@ -24,16 +24,15 @@ class App extends Component {
        <Fragment >
         <LoadingBar style={{background:'#007eff'}}/>
          <div className="list-container">
-          <Header/>
           {loading
-            ? <LogIn/>
+            ? <Route path='/' component={LogIn}/>
             : <div>
+                  <Header/>
                   <Switch>
                   <Route path='/'  exact component={Dashboard}/>
                   <Route path='/LeaderBoard' exact component={LeaderBoard}/>
                   <Route path='/QuestionPage/:id' exact component={QuestionPage}/>
                   <Route path='/add'exact component={NewQuestion}/>
-                  <Route path='/UserStat'exact component={UserStat}/>
                   <Route component={NoPageFound}/>
                   </Switch>
               </div>}

@@ -350,6 +350,9 @@ li {
   display:flex;
 }
 
+.users-options{
+  width:-webkit-fill-available;
+}
 .login-avatar{
       height: 50px;
     border-radius: 50px;
@@ -357,14 +360,13 @@ li {
 }
 
 .login-btn{
-   text-transform: uppercase;
-  border: 1px solid rgba(0,0,0,.29);
-  cursor: pointer;
-  background: #fff;
-  font-size: 20px;
-  width: auto;
-  display:flex;
-  margin:auto;
+    text-transform: uppercase;
+    border: 1px solid rgba(0,0,0,.29);
+    cursor: pointer;
+    background: #fff;
+    font-size: 20px;
+    display: flex;
+    margin: 16px auto;
 }
 
 .user-name{
