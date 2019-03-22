@@ -4,8 +4,8 @@ import pic3 from './pic3.jpg'
 
 let users = {
   sarahedo: {
-    id: 'sarahedo',
-    name: ' Sarah Edo',
+    id: 'sarah',
+    name: ' Sarah',
     avatarURL: pic3,
     answers: {
       "8xf0y6ziyjabvozdd253nd": 'optionOne',
@@ -26,8 +26,8 @@ let users = {
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
   johndoe: {
-    id: 'johndoe',
-    name: ' John Doe ',
+    id: 'ibrahim',
+    name: ' Ibrahim ',
     avatarURL: pic2,
     answers: {
       "xj352vofupe1dqz9emx13r": 'optionOne',
