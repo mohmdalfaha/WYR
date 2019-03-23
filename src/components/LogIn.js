@@ -41,12 +41,8 @@ class LogIn extends Component {
       <div className='login-page'>
         <div className='user-details'>
         <h1 className='center'>Would You Rather Game</h1>
-        <p> A game where each one can post a challenging<br/>
-         question of two options, and others will answer with only one option</p>
-           <p> At the same time, the user can answer others' questions.
-           <br/> The most answering and qeustioning person will be ranked at the top</p>
           <select className='users-options' onChange={this.handleChange}>
-            <option></option>
+            <option>Select a user......</option>
             {users.map((user) => (
             <option key={user.id} value={user.id}>{user.name} </option>
               ))
