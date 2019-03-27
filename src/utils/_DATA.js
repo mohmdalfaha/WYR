@@ -3,7 +3,7 @@ import pic2 from './pic2.jpg'
 import pic3 from './pic3.jpg'
 
 let users = {
-  sarahedo: {
+  sarah: {
     id: 'sarah',
     name: ' Sarah',
     avatarURL: pic3,
@@ -25,7 +25,7 @@ let users = {
     },
     questions: ['loxhs1bqm25b708cmbf3g', 'vthrdm985a262al8qx3do'],
   },
-  johndoe: {
+  ibrahim: {
     id: 'ibrahim',
     name: ' Ibrahim ',
     avatarURL: pic2,
@@ -41,11 +41,11 @@ let users = {
 let questions = {
   "8xf0y6ziyjabvozdd253nd": {
     id: '8xf0y6ziyjabvozdd253nd',
-    author: 'sarahedo',
+    author: 'sarah',
     timestamp: 1467166872634,
     title:'memory',
     optionOne: {
-      votes: ['sarahedo'],
+      votes: ['sarah'],
       text: 'have horrible short term memory',
     },
     optionTwo: {
@@ -55,7 +55,7 @@ let questions = {
   },
   "6ni6ok3ym7mf1p33lnez": {
     id: '6ni6ok3ym7mf1p33lnez',
-    author: 'johndoe',
+    author: 'ibrahim',
     timestamp: 1468479767190,
     title: 'To be',
     optionOne: {
@@ -63,13 +63,13 @@ let questions = {
       text: 'become a superhero',
     },
     optionTwo: {
-      votes: ['johndoe', 'sarahedo'],
+      votes: ['ibrahim', 'sarah'],
       text: 'become a supervillain'
     }
   },
   "am8ehyc8byjqgar0jgpub9": {
     id: 'am8ehyc8byjqgar0jgpub9',
-    author: 'sarahedo',
+    author: 'sarah',
     timestamp: 1488579767190,
     title: 'superpowers',
     optionOne: {
@@ -77,7 +77,7 @@ let questions = {
       text: 'be telekinetic',
     },
     optionTwo: {
-      votes: ['sarahedo'],
+      votes: ['sarah'],
       text: 'be telepathic'
     }
   },
@@ -91,7 +91,7 @@ let questions = {
       text: 'be a front-end developer',
     },
     optionTwo: {
-      votes: ['sarahedo'],
+      votes: ['sarah'],
       text: 'be a back-end developer'
     }
   },
@@ -105,17 +105,17 @@ let questions = {
       text: 'find $50 yourself',
     },
     optionTwo: {
-      votes: ['johndoe'],
+      votes: ['ibrahim'],
       text: 'have your best friend find $500'
     }
   },
   "xj352vofupe1dqz9emx13r": {
     id: 'xj352vofupe1dqz9emx13r',
-    author: 'johndoe',
+    author: 'ibrahim',
     timestamp: 1493579767190,
     title:'Programming Language',
     optionOne: {
-      votes: ['johndoe'],
+      votes: ['ibrahim'],
       text: 'write JavaScript',
     },
     optionTwo: {

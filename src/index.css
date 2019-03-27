@@ -341,9 +341,9 @@ li {
   text-align:center;
   width: 100%;
   max-width: fit-content;
-  padding: 200px;
+  padding: 20px;
   margin: 0 auto;
-  border: 6px solid #dad7d7;
+  border: 2px solid #dad7d7;
   border-radius: 30px;
   align-items:center;
   display:flex;
@@ -351,7 +351,10 @@ li {
 
 .users-options{
   width:-webkit-fill-available;
+  height:30px;
+  border-radius:50px;
 }
+
 .login-avatar{
       height: 50px;
     border-radius: 50px;
@@ -359,13 +362,17 @@ li {
 }
 
 .login-btn{
-    text-transform: uppercase;
     border: 1px auto rgba(0,0,0,.29);
     cursor: pointer;
-    background: #fff;
-    font-size: 30px;
+    color:black;
+    font-size: 20px;
     display: flex;
     margin: 16px auto;
+    background-color: #4083ef;
+    border: 1px solid #0d68a5;
+    border-radius:30px;
+    padding: 10px;
+    color: white;
 }
 
 .user-name{
